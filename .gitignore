@@ -1,8 +1,22 @@
 # Compiled class file
 *.class
+target/
+crhttp/
+testhttp/
+.bak/
 
 # Log file
 *.log
+
+# ide
+.idea/
+*.iml
+.DS_Store
+*.classpath
+*.project
+*.settings
+*.factorypath
+.vscode/
 
 # BlueJ files
 *.ctxt
@@ -19,5 +33,10 @@
 *.tar.gz
 *.rar
 
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+dump.rdb
+
+#profiles
+application-*.yml
