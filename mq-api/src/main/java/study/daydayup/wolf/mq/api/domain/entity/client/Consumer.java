@@ -1,4 +1,4 @@
-package study.daydayup.wolf.mq.api.domain.entity.monitor;
+package study.daydayup.wolf.mq.api.domain.entity.client;
 
 import lombok.Data;
 import study.daydayup.wolf.framework.layer.api.Model;
@@ -6,19 +6,18 @@ import study.daydayup.wolf.framework.layer.api.Model;
 import java.time.LocalDateTime;
 
 /**
- * study.daydayup.wolf.mq.api.domain.entity.monitor
+ * study.daydayup.wolf.mq.api.domain.entity.client
  *
  * @author Wingle
- * @since 2021/4/16 4:55 下午
+ * @since 2021/4/16 4:57 下午
  **/
 @Data
-public class Owner implements Model {
+public class Consumer implements Model {
     private Long id;
+    private String consumerNo;
 
+    private String ip;
     private String name;
-    private String mobile;
-    private String email;
-    private String im;
     private String description;
     private String tags;
 

@@ -92,7 +92,7 @@
         </table>
 
         <table tableName="wmq_task_log" domainObjectName="MqTaskLogDO" mapperName="MqTaskLogDAO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false" enableSelectByExample="false" >
-            <columnOverride column="task_type" javaType="java.lang.Integer" jdbcType="TINYINT" />
+            <columnOverride column="log_type" javaType="java.lang.Integer" jdbcType="TINYINT" />
         </table>
 
         <table tableName="wmq_owner" domainObjectName="MqOwnerDO" mapperName="MqOwnerDAO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false" enableSelectByExample="false" >

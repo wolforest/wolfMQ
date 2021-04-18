@@ -117,13 +117,15 @@ CREATE TABLE IF NOT EXISTS `wmq_task_log`
 (
     `id`                BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
 
-    `task_type`         TINYINT(4) UNSIGNED  NOT NULL DEFAULT 0 COMMENT 'taskType',
+    `log_type`          TINYINT(4) UNSIGNED  NOT NULL DEFAULT 0 COMMENT 'logType',
+    `task_no`           VARCHAR(50) NOT NULL DEFAULT '' COMMENT 'taskNo',
+    `task_id`           BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'taskId',
+
     `name`              VARCHAR(50)         NOT NULL DEFAULT '' COMMENT '',
     `description`       VARCHAR(1000)       NOT NULL DEFAULT '' COMMENT '',
     `tags`              VARCHAR(1000)         NOT NULL DEFAULT '' COMMENT 'tags',
 
     `version`           INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '版本号',
-    `owner_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后编辑者',
     `created_at`        DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`        DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT '编辑时间',
     PRIMARY KEY (`id`)
@@ -143,7 +145,6 @@ CREATE TABLE IF NOT EXISTS `wmq_owner`
     `tags`              VARCHAR(1000)         NOT NULL DEFAULT '' COMMENT 'tags',
 
     `version`           INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '版本号',
-    `owner_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后编辑者',
     `created_at`        DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`        DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT '编辑时间',
     PRIMARY KEY (`id`)
@@ -161,7 +162,6 @@ CREATE TABLE IF NOT EXISTS `wmq_consumer`
     `tags`              VARCHAR(1000)         NOT NULL DEFAULT '' COMMENT 'tags',
 
     `version`           INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '版本号',
-    `owner_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后编辑者',
     `created_at`        DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`        DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT '编辑时间',
     UNIQUE INDEX `udx_no`(`consumer_no`),
