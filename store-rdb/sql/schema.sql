@@ -8,9 +8,19 @@ CREATE TABLE IF NOT EXISTS `wmq_topic`
     `topic_id`          VARCHAR(50) NOT NULL DEFAULT '' COMMENT 'topicId',
     `topic_type`        TINYINT(4) UNSIGNED  NOT NULL DEFAULT 0 COMMENT 'topicType',
 
-    `name`              VARCHAR(100) NOT NULL DEFAULT '' COMMENT 'topicName',
-    `description`       VARCHAR(5000)        NOT NULL DEFAULT '' COMMENT 'description',
+    `trigger_type`      TINYINT(4) UNSIGNED  NOT NULL DEFAULT 0 COMMENT 'triggerType',
+    `trigger`           VARCHAR(5000)        NOT NULL DEFAULT '' COMMENT 'trigger',
+    `trigger_timeout`   INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'triggerTimeout(ms)',
 
+    `execute_mode`      TINYINT(4) UNSIGNED  NOT NULL DEFAULT 0 COMMENT 'executeMod',
+    `max_retry_times`   INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'maxRetryTimes',
+    `max_execute_time`  INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'maxExecuteTime(ms)',
+
+    `concurrency`       VARCHAR(1000)        NOT NULL DEFAULT '' COMMENT 'concurrency',
+    `sharding`          VARCHAR(1000)        NOT NULL DEFAULT '' COMMENT 'sharding',
+
+    `name`              VARCHAR(100) NOT NULL DEFAULT '' COMMENT 'topicName',
+    `description`       VARCHAR(1000)        NOT NULL DEFAULT '' COMMENT 'description',
 
     `version`           INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '版本号',
     `owner_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后编辑者',
@@ -26,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `wmq_message`
     `id`                BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `message_id`        VARCHAR(50) NOT NULL DEFAULT '' COMMENT 'messageId',
     `topic_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'topic',
+    `shard`             INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'shard',
     `state`             TINYINT(4) UNSIGNED  NOT NULL DEFAULT 0 COMMENT 'state',
 
     `producer`          VARCHAR(100)         NOT NULL DEFAULT '' COMMENT 'producer',
