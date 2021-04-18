@@ -1,4 +1,4 @@
-package study.daydayup.wolf.mq.api.domain.enums;
+package study.daydayup.wolf.mq.api.domain.enums.topic;
 
 import lombok.Getter;
 import study.daydayup.wolf.common.lang.enums.CodeBasedEnum;
