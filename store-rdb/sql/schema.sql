@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS `wmq_topic`
     `sharding`          VARCHAR(1000)        NOT NULL DEFAULT '' COMMENT 'sharding',
 
     `name`              VARCHAR(100) NOT NULL DEFAULT '' COMMENT 'topicName',
+    `tags`              VARCHAR(1000)         NOT NULL DEFAULT '' COMMENT 'tags',
     `description`       VARCHAR(1000)        NOT NULL DEFAULT '' COMMENT 'description',
 
     `version`           INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '版本号',
@@ -48,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `wmq_message`
     `lock_at`           DATETIME COMMENT 'lockAt',
 
     `attachment`        VARCHAR(5000)        NOT NULL DEFAULT '' COMMENT 'attachment',
-    `tags`              VARCHAR(100)         NOT NULL DEFAULT '' COMMENT 'tags',
+    `tags`              VARCHAR(1000)         NOT NULL DEFAULT '' COMMENT 'tags',
 
     `version`           INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '版本号',
     `owner_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后编辑者',
@@ -85,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `wmq_task`
     `lock_at`           DATETIME COMMENT 'lockAt',
 
     `attachment`        VARCHAR(5000)        NOT NULL DEFAULT '' COMMENT 'attachment',
-    `tags`              VARCHAR(100)         NOT NULL DEFAULT '' COMMENT 'tags',
+    `tags`              VARCHAR(1000)         NOT NULL DEFAULT '' COMMENT 'tags',
 
     `version`           INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '版本号',
     `owner_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后编辑者',
@@ -100,6 +101,10 @@ CREATE TABLE IF NOT EXISTS `wmq_task_dag`
 (
     `id`                BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
 
+    `name`              VARCHAR(50)         NOT NULL DEFAULT '' COMMENT '',
+    `description`       VARCHAR(1000)       NOT NULL DEFAULT '' COMMENT '',
+    `tags`              VARCHAR(1000)         NOT NULL DEFAULT '' COMMENT 'tags',
+
     `version`           INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '版本号',
     `owner_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后编辑者',
     `created_at`        DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -111,6 +116,11 @@ DROP TABLE IF EXISTS `wmq_task_log`;
 CREATE TABLE IF NOT EXISTS `wmq_task_log`
 (
     `id`                BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
+
+    `task_type`         TINYINT(4) UNSIGNED  NOT NULL DEFAULT 0 COMMENT 'taskType',
+    `name`              VARCHAR(50)         NOT NULL DEFAULT '' COMMENT '',
+    `description`       VARCHAR(1000)       NOT NULL DEFAULT '' COMMENT '',
+    `tags`              VARCHAR(1000)         NOT NULL DEFAULT '' COMMENT 'tags',
 
     `version`           INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '版本号',
     `owner_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后编辑者',
@@ -124,6 +134,14 @@ CREATE TABLE IF NOT EXISTS `wmq_owner`
 (
     `id`                BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
 
+    `name`              VARCHAR(100)         NOT NULL DEFAULT '' COMMENT '',
+    `mobile`            VARCHAR(100)         NOT NULL DEFAULT '' COMMENT '',
+    `email`             VARCHAR(200)         NOT NULL DEFAULT '' COMMENT '',
+    `im`                VARCHAR(1000)       NOT NULL DEFAULT '' COMMENT '',
+
+    `description`       VARCHAR(1000)       NOT NULL DEFAULT '' COMMENT '',
+    `tags`              VARCHAR(1000)         NOT NULL DEFAULT '' COMMENT 'tags',
+
     `version`           INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '版本号',
     `owner_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后编辑者',
     `created_at`        DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -136,9 +154,16 @@ CREATE TABLE IF NOT EXISTS `wmq_consumer`
 (
     `id`                BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
 
+    `consumer_no`       VARCHAR(50)         NOT NULL DEFAULT '' COMMENT '',
+    `ip`                VARCHAR(50)         NOT NULL DEFAULT '' COMMENT '',
+    `name`              VARCHAR(50)         NOT NULL DEFAULT '' COMMENT '',
+    `description`       VARCHAR(1000)       NOT NULL DEFAULT '' COMMENT '',
+    `tags`              VARCHAR(1000)         NOT NULL DEFAULT '' COMMENT 'tags',
+
     `version`           INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '版本号',
     `owner_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后编辑者',
     `created_at`        DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`        DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT '编辑时间',
+    UNIQUE INDEX `udx_no`(`consumer_no`),
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COMMENT = 'consumer';
