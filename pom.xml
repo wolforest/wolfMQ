@@ -16,10 +16,9 @@
         <module>mq-api</module>
         <module>mq-biz</module>
         <module>store-rdb</module>
-        <module>broker-embed</module>
         <module>client</module>
         <module>broker-rest</module>
-        <module>broken-dubbo</module>
+        <module>broker-dubbo</module>
     </modules>
 
     <properties>
