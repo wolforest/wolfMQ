@@ -13,5 +13,10 @@
     <artifactId>mq-biz</artifactId>
     <version>1.1.0-SNAPSHOT</version>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>study.daydayup.wolf.mq</groupId>
+            <artifactId>mq-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>

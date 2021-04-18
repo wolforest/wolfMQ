@@ -26,7 +26,40 @@
     </properties>
 
     <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>study.daydayup.wolf.mq</groupId>
+                <artifactId>mq-api</artifactId>
+                <version>${mq.version}</version>
+            </dependency>
 
+            <dependency>
+                <groupId>study.daydayup.wolf.mq</groupId>
+                <artifactId>mq-dubbo</artifactId>
+                <version>${mq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>study.daydayup.wolf.mq</groupId>
+                <artifactId>mq-rest</artifactId>
+                <version>${mq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>study.daydayup.wolf.mq</groupId>
+                <artifactId>mq-client</artifactId>
+                <version>${mq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>study.daydayup.wolf.mq</groupId>
+                <artifactId>mq-biz</artifactId>
+                <version>${mq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>study.daydayup.wolf.mq</groupId>
+                <artifactId>store-rdb</artifactId>
+                <version>${mq.version}</version>
+            </dependency>
+
+        </dependencies>
     </dependencyManagement>
 
     <dependencies>
