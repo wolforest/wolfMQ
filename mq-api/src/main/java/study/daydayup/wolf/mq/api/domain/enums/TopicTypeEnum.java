@@ -11,7 +11,10 @@ import study.daydayup.wolf.common.lang.enums.CodeBasedEnum;
  **/
 @Getter
 public enum TopicTypeEnum implements CodeBasedEnum {
-    FAILED(120, "FAILED"),
+    SIMPLE_TASK(3, "simpleTask"),
+
+    DELAYED_TASK(2, "delayedTask"),
+    MESSAGE_QUEUE(1, "messageQueue"),
     ;
 
     private final int code;
