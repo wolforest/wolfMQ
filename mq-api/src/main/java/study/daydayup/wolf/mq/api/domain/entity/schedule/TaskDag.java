@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * @since 2021/4/16 4:53 下午
  **/
 @Data
-public class taskDag implements Model {
+public class TaskDag implements Model {
     private Long id;
 
     private String name;
