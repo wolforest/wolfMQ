@@ -8,7 +8,11 @@ import lombok.Data;
 public class MqTaskLogDO implements Serializable {
     private Long id;
 
-    private Integer taskType;
+    private Integer logType;
+
+    private String taskNo;
+
+    private Long taskId;
 
     private String name;
 
@@ -17,8 +21,6 @@ public class MqTaskLogDO implements Serializable {
     private String tags;
 
     private Integer version;
-
-    private Long ownerId;
 
     private LocalDateTime createdAt;
 
@@ -33,12 +35,13 @@ public class MqTaskLogDO implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", taskType=").append(taskType);
+        sb.append(", logType=").append(logType);
+        sb.append(", taskNo=").append(taskNo);
+        sb.append(", taskId=").append(taskId);
         sb.append(", name=").append(name);
         sb.append(", description=").append(description);
         sb.append(", tags=").append(tags);
         sb.append(", version=").append(version);
-        sb.append(", ownerId=").append(ownerId);
         sb.append(", createdAt=").append(createdAt);
         sb.append(", updatedAt=").append(updatedAt);
         sb.append("]");
@@ -58,12 +61,13 @@ public class MqTaskLogDO implements Serializable {
         }
         MqTaskLogDO other = (MqTaskLogDO) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getTaskType() == null ? other.getTaskType() == null : this.getTaskType().equals(other.getTaskType()))
+            && (this.getLogType() == null ? other.getLogType() == null : this.getLogType().equals(other.getLogType()))
+            && (this.getTaskNo() == null ? other.getTaskNo() == null : this.getTaskNo().equals(other.getTaskNo()))
+            && (this.getTaskId() == null ? other.getTaskId() == null : this.getTaskId().equals(other.getTaskId()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()))
             && (this.getTags() == null ? other.getTags() == null : this.getTags().equals(other.getTags()))
             && (this.getVersion() == null ? other.getVersion() == null : this.getVersion().equals(other.getVersion()))
-            && (this.getOwnerId() == null ? other.getOwnerId() == null : this.getOwnerId().equals(other.getOwnerId()))
             && (this.getCreatedAt() == null ? other.getCreatedAt() == null : this.getCreatedAt().equals(other.getCreatedAt()))
             && (this.getUpdatedAt() == null ? other.getUpdatedAt() == null : this.getUpdatedAt().equals(other.getUpdatedAt()));
     }
@@ -73,12 +77,13 @@ public class MqTaskLogDO implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getTaskType() == null) ? 0 : getTaskType().hashCode());
+        result = prime * result + ((getLogType() == null) ? 0 : getLogType().hashCode());
+        result = prime * result + ((getTaskNo() == null) ? 0 : getTaskNo().hashCode());
+        result = prime * result + ((getTaskId() == null) ? 0 : getTaskId().hashCode());
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
         result = prime * result + ((getTags() == null) ? 0 : getTags().hashCode());
         result = prime * result + ((getVersion() == null) ? 0 : getVersion().hashCode());
-        result = prime * result + ((getOwnerId() == null) ? 0 : getOwnerId().hashCode());
         result = prime * result + ((getCreatedAt() == null) ? 0 : getCreatedAt().hashCode());
         result = prime * result + ((getUpdatedAt() == null) ? 0 : getUpdatedAt().hashCode());
         return result;

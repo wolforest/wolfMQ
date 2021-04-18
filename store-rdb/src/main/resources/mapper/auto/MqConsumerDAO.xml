@@ -9,12 +9,11 @@
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="tags" jdbcType="VARCHAR" property="tags" />
     <result column="version" jdbcType="INTEGER" property="version" />
-    <result column="owner_id" jdbcType="BIGINT" property="ownerId" />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, consumer_no, ip, `name`, description, tags, version, owner_id, created_at, updated_at
+    id, consumer_no, ip, `name`, description, tags, version, created_at, updated_at
   </sql>
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -29,12 +28,12 @@
   <insert id="insert" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqConsumerDO">
     insert into wmq_consumer (id, consumer_no, ip, 
       `name`, description, tags, 
-      version, owner_id, created_at, 
-      updated_at)
+      version, created_at, updated_at
+      )
     values (#{id,jdbcType=BIGINT}, #{consumerNo,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
       #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR}, 
-      #{version,jdbcType=INTEGER}, #{ownerId,jdbcType=BIGINT}, #{createdAt,jdbcType=TIMESTAMP}, 
-      #{updatedAt,jdbcType=TIMESTAMP})
+      #{version,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqConsumerDO">
     insert into wmq_consumer
@@ -59,9 +58,6 @@
       </if>
       <if test="version != null">
         version,
-      </if>
-      <if test="ownerId != null">
-        owner_id,
       </if>
       <if test="createdAt != null">
         created_at,
@@ -92,9 +88,6 @@
       <if test="version != null">
         #{version,jdbcType=INTEGER},
       </if>
-      <if test="ownerId != null">
-        #{ownerId,jdbcType=BIGINT},
-      </if>
       <if test="createdAt != null">
         #{createdAt,jdbcType=TIMESTAMP},
       </if>
@@ -124,9 +117,6 @@
       <if test="version != null">
         version = #{version,jdbcType=INTEGER},
       </if>
-      <if test="ownerId != null">
-        owner_id = #{ownerId,jdbcType=BIGINT},
-      </if>
       <if test="createdAt != null">
         created_at = #{createdAt,jdbcType=TIMESTAMP},
       </if>
@@ -144,7 +134,6 @@
       description = #{description,jdbcType=VARCHAR},
       tags = #{tags,jdbcType=VARCHAR},
       version = #{version,jdbcType=INTEGER},
-      owner_id = #{ownerId,jdbcType=BIGINT},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
