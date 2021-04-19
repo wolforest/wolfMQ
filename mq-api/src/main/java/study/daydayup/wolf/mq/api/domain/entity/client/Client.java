@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * @since 2021/4/16 4:57 下午
  **/
 @Data
-public class Consumer implements Model {
+public class Client implements Model {
     private Long id;
     private String consumerNo;
 

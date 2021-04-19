@@ -3,7 +3,7 @@ package study.daydayup.wolf.mq.store.rdb.converter;
 import org.springframework.beans.BeanUtils;
 import study.daydayup.wolf.common.lang.contract.Converter;
 import study.daydayup.wolf.common.util.collection.CollectionUtil;
-import study.daydayup.wolf.mq.api.domain.entity.client.Consumer;
+import study.daydayup.wolf.mq.api.domain.entity.client.Client;
 import study.daydayup.wolf.mq.store.rdb.dataobject.MqConsumerDO;
 
 import java.util.List;
@@ -14,29 +14,29 @@ import java.util.List;
  * @author Wingle
  * @since 2020/3/10 3:50 下午
  **/
-public class ConsumerConverter implements Converter {
-    public static Consumer toModel(MqConsumerDO consumerDO) {
+public class ClientConverter implements Converter {
+    public static Client toModel(MqConsumerDO consumerDO) {
         if (consumerDO == null) {
             return null;
         }
 
-        Consumer consumer = new Consumer();
-        BeanUtils.copyProperties(consumerDO, consumer);
+        Client client = new Client();
+        BeanUtils.copyProperties(consumerDO, client);
 
-        return consumer;
+        return client;
     }
 
-    public static List<Consumer> toModel(List<MqConsumerDO> consumerDOList) {
-        return CollectionUtil.to(consumerDOList, ConsumerConverter::toModel);
+    public static List<Client> toModel(List<MqConsumerDO> consumerDOList) {
+        return CollectionUtil.to(consumerDOList, ClientConverter::toModel);
     }
 
-    public static MqConsumerDO toDO(Consumer consumer) {
-        if (consumer == null) {
+    public static MqConsumerDO toDO(Client client) {
+        if (client == null) {
             return null;
         }
 
         MqConsumerDO consumerDO = new MqConsumerDO();
-        BeanUtils.copyProperties(consumer, consumerDO);
+        BeanUtils.copyProperties(client, consumerDO);
         return consumerDO;
     }
 }

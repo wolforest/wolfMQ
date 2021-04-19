@@ -150,8 +150,8 @@ CREATE TABLE IF NOT EXISTS `wmq_owner`
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COMMENT = 'owner';
 
-DROP TABLE IF EXISTS `wmq_consumer`;
-CREATE TABLE IF NOT EXISTS `wmq_consumer`
+DROP TABLE IF EXISTS `wmq_client`;
+CREATE TABLE IF NOT EXISTS `wmq_client`
 (
     `id`                BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
 
@@ -166,4 +166,4 @@ CREATE TABLE IF NOT EXISTS `wmq_consumer`
     `updated_at`        DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT '编辑时间',
     UNIQUE INDEX `udx_no`(`consumer_no`),
     PRIMARY KEY (`id`)
-) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COMMENT = 'consumer';
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COMMENT = 'client';

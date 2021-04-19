@@ -98,7 +98,7 @@
         <table tableName="wmq_owner" domainObjectName="MqOwnerDO" mapperName="MqOwnerDAO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false" enableSelectByExample="false" >
         </table>
 
-        <table tableName="wmq_consumer" domainObjectName="MqConsumerDO" mapperName="MqConsumerDAO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false" enableSelectByExample="false" >
+        <table tableName="wmq_client" domainObjectName="MqClientDO" mapperName="MqClientDAO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false" enableSelectByExample="false" >
         </table>
 
 
