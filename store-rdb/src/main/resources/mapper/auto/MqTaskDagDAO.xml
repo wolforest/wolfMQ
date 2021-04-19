@@ -24,20 +24,17 @@
     delete from wmq_task_dag
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqTaskDagDO">
-    insert into wmq_task_dag (id, `name`, description, 
-      tags, version, owner_id, 
-      created_at, updated_at)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{tags,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, #{ownerId,jdbcType=BIGINT}, 
-      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP})
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqTaskDagDO" useGeneratedKeys="true">
+    insert into wmq_task_dag (`name`, description, tags, 
+      version, owner_id, created_at, 
+      updated_at)
+    values (#{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR}, 
+      #{version,jdbcType=INTEGER}, #{ownerId,jdbcType=BIGINT}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqTaskDagDO">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqTaskDagDO" useGeneratedKeys="true">
     insert into wmq_task_dag
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="name != null">
         `name`,
       </if>
@@ -61,9 +58,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>

@@ -33,26 +33,23 @@
     delete from wmq_message
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqMessageDO">
-    insert into wmq_message (id, message_no, topic_id, 
-      shard, `state`, producer, 
-      message, expired_at, locker, 
-      lock_at, attachment, tags, 
-      version, owner_id, created_at, 
-      updated_at)
-    values (#{id,jdbcType=BIGINT}, #{messageNo,jdbcType=VARCHAR}, #{topicId,jdbcType=BIGINT}, 
-      #{shard,jdbcType=INTEGER}, #{state,jdbcType=TINYINT}, #{producer,jdbcType=VARCHAR}, 
-      #{message,jdbcType=VARCHAR}, #{expiredAt,jdbcType=TIMESTAMP}, #{locker,jdbcType=VARCHAR}, 
-      #{lockAt,jdbcType=TIMESTAMP}, #{attachment,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR}, 
-      #{version,jdbcType=INTEGER}, #{ownerId,jdbcType=BIGINT}, #{createdAt,jdbcType=TIMESTAMP}, 
-      #{updatedAt,jdbcType=TIMESTAMP})
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqMessageDO" useGeneratedKeys="true">
+    insert into wmq_message (message_no, topic_id, shard, 
+      `state`, producer, message, 
+      expired_at, locker, lock_at, 
+      attachment, tags, version, 
+      owner_id, created_at, updated_at
+      )
+    values (#{messageNo,jdbcType=VARCHAR}, #{topicId,jdbcType=BIGINT}, #{shard,jdbcType=INTEGER}, 
+      #{state,jdbcType=TINYINT}, #{producer,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, 
+      #{expiredAt,jdbcType=TIMESTAMP}, #{locker,jdbcType=VARCHAR}, #{lockAt,jdbcType=TIMESTAMP}, 
+      #{attachment,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
+      #{ownerId,jdbcType=BIGINT}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqMessageDO">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqMessageDO" useGeneratedKeys="true">
     insert into wmq_message
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="messageNo != null">
         message_no,
       </if>
@@ -100,9 +97,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
       <if test="messageNo != null">
         #{messageNo,jdbcType=VARCHAR},
       </if>

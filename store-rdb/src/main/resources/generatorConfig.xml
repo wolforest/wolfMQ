@@ -74,31 +74,38 @@
         </javaClientGenerator>
 
         <table tableName="wmq_topic" domainObjectName="MqTopicDO" mapperName="MqTopicDAO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false" enableSelectByExample="false" >
+            <generatedKey column="id" sqlStatement="JDBC" />
             <columnOverride column="topic_type" javaType="java.lang.Integer" jdbcType="TINYINT" />
             <columnOverride column="trigger_type" javaType="java.lang.Integer" jdbcType="TINYINT" />
             <columnOverride column="execute_mode" javaType="java.lang.Integer" jdbcType="MEDIUMINT" />
         </table>
 
         <table tableName="wmq_message" domainObjectName="MqMessageDO" mapperName="MqMessageDAO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false" enableSelectByExample="false" >
+            <generatedKey column="id" sqlStatement="JDBC" />
             <columnOverride column="state" javaType="java.lang.Integer" jdbcType="TINYINT" />
         </table>
 
         <table tableName="wmq_task" domainObjectName="MqTaskDO" mapperName="MqTaskDAO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false" enableSelectByExample="false" >
+            <generatedKey column="id" sqlStatement="JDBC" />
             <columnOverride column="state" javaType="java.lang.Integer" jdbcType="TINYINT" />
             <columnOverride column="execute_mode" javaType="java.lang.Integer" jdbcType="MEDIUMINT" />
         </table>
 
         <table tableName="wmq_task_dag" domainObjectName="MqTaskDagDO" mapperName="MqTaskDagDAO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false" enableSelectByExample="false" >
+            <generatedKey column="id" sqlStatement="JDBC" />
         </table>
 
         <table tableName="wmq_task_log" domainObjectName="MqTaskLogDO" mapperName="MqTaskLogDAO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false" enableSelectByExample="false" >
+            <generatedKey column="id" sqlStatement="JDBC" />
             <columnOverride column="log_type" javaType="java.lang.Integer" jdbcType="TINYINT" />
         </table>
 
         <table tableName="wmq_owner" domainObjectName="MqOwnerDO" mapperName="MqOwnerDAO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false" enableSelectByExample="false" >
+            <generatedKey column="id" sqlStatement="JDBC" />
         </table>
 
         <table tableName="wmq_client" domainObjectName="MqClientDO" mapperName="MqClientDAO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByPrimaryKey="false" enableDeleteByExample="false" enableSelectByExample="false" >
+            <generatedKey column="id" sqlStatement="JDBC" />
         </table>
 
 
