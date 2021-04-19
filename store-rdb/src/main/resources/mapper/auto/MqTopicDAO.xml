@@ -36,7 +36,7 @@
     delete from wmq_topic
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqTopicDO">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqTopicDO">
     insert into wmq_topic (id, topic_no, topic_type, 
       trigger_type, `trigger`, trigger_timeout, 
       execute_mode, max_retry_times, max_execute_time, 
@@ -52,7 +52,7 @@
       #{ownerId,jdbcType=BIGINT}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqTopicDO">
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqTopicDO">
     insert into wmq_topic
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

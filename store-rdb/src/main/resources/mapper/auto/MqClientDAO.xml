@@ -25,7 +25,7 @@
     delete from wmq_client
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqClientDO">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqClientDO">
     insert into wmq_client (id, consumer_no, ip, 
       `name`, description, tags, 
       version, created_at, updated_at
@@ -35,7 +35,7 @@
       #{version,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqClientDO">
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="study.daydayup.wolf.mq.store.rdb.dataobject.MqClientDO">
     insert into wmq_client
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
