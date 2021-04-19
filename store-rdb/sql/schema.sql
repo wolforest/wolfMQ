@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `wmq_topic`
     `owner_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后编辑者',
     `created_at`        DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`        DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT '编辑时间',
+    UNIQUE INDEX `udx_no`(`topic_no`),
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COMMENT = 'topic';
 
@@ -55,6 +56,9 @@ CREATE TABLE IF NOT EXISTS `wmq_message`
     `owner_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后编辑者',
     `created_at`        DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`        DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT '编辑时间',
+    UNIQUE INDEX `udx_no`(`message_no`),
+    INDEX `idx_locker` (`locker`),
+    INDEX `idx_topic`(`topic_id`,`state`),
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COMMENT = 'message';
 
@@ -92,6 +96,9 @@ CREATE TABLE IF NOT EXISTS `wmq_task`
     `owner_id`          BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后编辑者',
     `created_at`        DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`        DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT '编辑时间',
+    UNIQUE INDEX `udx_no`(`task_no`),
+    INDEX `idx_locker` (`locker`),
+    INDEX `idx_trigger`(`trigger_at`,`state`,`topic_id`),
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COMMENT = '任务';
 
@@ -128,6 +135,7 @@ CREATE TABLE IF NOT EXISTS `wmq_task_log`
     `version`           INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '版本号',
     `created_at`        DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`        DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT '编辑时间',
+    INDEX `idx_task`(`task_id`, `log_type`),
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COMMENT = 'taskLog';
 
@@ -147,6 +155,7 @@ CREATE TABLE IF NOT EXISTS `wmq_owner`
     `version`           INT(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '版本号',
     `created_at`        DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at`        DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT '编辑时间',
+    UNIQUE INDEX `udx_name`(`name`),
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4 COMMENT = 'owner';
 
