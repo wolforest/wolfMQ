@@ -3,7 +3,9 @@ package study.daydayup.wolf.mq.store.rdb.repository;
 import org.springframework.stereotype.Component;
 import study.daydayup.wolf.mq.api.domain.entity.schedule.Task;
 import study.daydayup.wolf.mq.api.domain.repository.schedule.TaskRepository;
+import study.daydayup.wolf.mq.store.rdb.dao.MqTaskDAO;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -16,6 +18,9 @@ import java.util.List;
  **/
 @Component
 public class RdbTaskRepository implements TaskRepository {
+    @Resource
+    private MqTaskDAO mqTaskDAO;
+
     @Override
     public List<Task> lockTaskByRange(LocalDateTime start, LocalDateTime end, Integer state, int limit) {
         return null;

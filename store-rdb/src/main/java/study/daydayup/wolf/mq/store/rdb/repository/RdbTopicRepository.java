@@ -3,6 +3,9 @@ package study.daydayup.wolf.mq.store.rdb.repository;
 import org.springframework.stereotype.Component;
 import study.daydayup.wolf.mq.api.domain.entity.Topic;
 import study.daydayup.wolf.mq.api.domain.repository.TopicRepository;
+import study.daydayup.wolf.mq.store.rdb.dao.MqTopicDAO;
+
+import javax.annotation.Resource;
 
 /**
  * study.daydayup.wolf.mq.store.rdb.repository
@@ -12,6 +15,9 @@ import study.daydayup.wolf.mq.api.domain.repository.TopicRepository;
  **/
 @Component
 public class RdbTopicRepository implements TopicRepository {
+    @Resource
+    private MqTopicDAO mqTopicDAO;
+
     @Override
     public int add(Topic topic) {
         return 0;
